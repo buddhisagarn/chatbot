@@ -204,7 +204,8 @@
 
         return (
           <div className="chat-messages-container" ref={chatMessagesRef}>
-            {chatMessages.map((chatmessage) => {
+            {chatMessages.length===0 ? (<p className="welcome-message">Welcome to the chatbot project! Send a message using the textbox below </p> ):(
+            chatMessages.map((chatmessage) => {
               return (
                 <ChatUser
                   key={chatmessage.key}
@@ -212,35 +213,15 @@
                   sender={chatmessage.sender}
                 />
               );
-            })}
+            })
+          )}
           </div>
         );
       }
 
       function App() {
         // const array = React.useState([
-        const [chatMessages, setChatMessages] = React.useState([
-          {
-            key: "1",
-            message: "Hello chatBot",
-            sender: "user",
-          },
-          {
-            key: "2",
-            message: "Hello! How can I help You",
-            sender: "robot",
-          },
-          {
-            key: "3",
-            message: "Get me today date",
-            sender: "user",
-          },
-          {
-            key: "4",
-            message: "Today is Novemner 12",
-            sender: "robot",
-          },
-        ]);
+        const [chatMessages, setChatMessages] = React.useState([]);
 
         return (
           <div className="app-container">
@@ -262,4 +243,5 @@
     </script>
   </body>
 </html>
+
 
